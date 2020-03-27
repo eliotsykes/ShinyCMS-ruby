@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :do_not_contact do
-    email { '{abcd123efg456etcetcblahblah}@example.com' }
+    email { Faker::Internet.unique.email }
   end
 end
