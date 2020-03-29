@@ -5,6 +5,4 @@ class Subscription < ApplicationRecord
 
   belongs_to :subscriber, inverse_of: :subscriptions, polymorphic: true
   belongs_to :list,       inverse_of: :subscriptions, class_name: 'MailingList'
-
-  has_one :consent, inverse_of: :purpose, dependent: :destroy
 end
