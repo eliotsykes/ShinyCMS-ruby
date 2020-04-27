@@ -379,9 +379,9 @@ ActiveRecord::Schema.define(version: 2020_04_09_180906) do
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.integer "list_id", null: false
     t.integer "subscriber_id", null: false
     t.string "subscriber_type", default: "EmailRecipient", null: false
+    t.integer "mailing_list_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
