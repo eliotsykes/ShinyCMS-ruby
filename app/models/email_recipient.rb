@@ -7,7 +7,7 @@ class EmailRecipient < ApplicationRecord
   validates :name,  presence: true
   validates :token, presence: true, uniqueness: true
 
-  has_many :subscriptions, inverse_of: :subscriber, dependent: :destroy
+  has_many :subscriptions, as: :subscriber, dependent: :destroy
   has_many :lists, through: :subscriptions
 
   # Email stats (powered by Ahoy)
