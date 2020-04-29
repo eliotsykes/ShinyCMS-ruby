@@ -128,6 +128,12 @@ seed FeatureFlag, { name: 'news' }, {
   enabled_for_logged_in: true,
   enabled_for_admins: true
 }
+seed FeatureFlag, { name: 'newsletters' }, {
+  description: 'Enable newsletter features (lists, subscriptions, etc)',
+  enabled: true,
+  enabled_for_logged_in: true,
+  enabled_for_admins: true
+}
 seed FeatureFlag, { name: 'akismet_on_comments' }, {
   description: 'Detect spam comments with Akismet',
   enabled: true,
