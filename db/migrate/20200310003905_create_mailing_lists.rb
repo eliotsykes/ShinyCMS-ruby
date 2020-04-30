@@ -2,6 +2,9 @@ class CreateMailingLists < ActiveRecord::Migration[6.0]
   def change
     create_table :mailing_lists do |t|
       t.string :name, null: false
+      t.string :title, null: false
+      t.string :slug, null: false
+
       t.boolean :is_public, null: false, default: false
 
       t.timestamps
