@@ -16,10 +16,16 @@ module NameTitleSlug
     validates :slug, presence:  true
     validates :slug, safe_slug: true
     validates :slug, format:    ANCHORED_SLUG_REGEX
-    validates :slug, uniqueness: {
-      scope: :section,
-      message: I18n.t( 'models.concerns.name_title_slug.slug_must_be_unique' )
-    }
+    if respond_to?( :section )
+      validates :slug, uniqueness: {
+        scope: :section,
+        message: I18n.t( 'concerns.name_title_slug.slug_must_be_unique' )
+      }
+    else
+      validates :slug, uniqueness: {
+        message: I18n.t( 'concerns.name_title_slug.slug_must_be_unique' )
+      }
+    end
 
     before_validation :generate_title, if: -> { title.blank? && name.present? }
     before_validation :generate_slug,  if: -> { slug.blank?  && name.present? }
