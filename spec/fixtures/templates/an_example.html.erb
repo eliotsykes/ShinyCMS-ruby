@@ -16,10 +16,3 @@
 <p class="small">
   Contact: <%= shared_content( 'the_email' ) %>
 </p>
-
-<h2>
-  Newsletter
-</h2>
-
-<%= render partial: 'includes/subscription_form', locals:
-    { show_name_field: true, list: mailing_list( 'footer' ) } %>
