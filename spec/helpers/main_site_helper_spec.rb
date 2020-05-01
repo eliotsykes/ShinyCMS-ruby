@@ -12,11 +12,11 @@ RSpec.describe MainSiteHelper, type: :helper do
     end
   end
 
-  describe 'mailing_list( slug )' do
+  describe 'find_list_by_slug( slug )' do
     it 'returns the mailing_list matching the slug' do
       ml1 = create :mailing_list, slug: 'newsletter'
 
-      expect( helper.mailing_list( 'newsletter' ) ).to eq ml1
+      expect( helper.find_list_by_slug( 'newsletter' ) ).to eq ml1
     end
   end
 end

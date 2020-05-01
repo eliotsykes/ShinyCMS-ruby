@@ -24,7 +24,7 @@ module MainSiteHelper
     InsertSet.first.elements.where( name: name ).pick( :content_type ) == type
   end
 
-  def mailing_list( slug )
+  def find_list_by_slug( slug )
     MailingList.find_by( slug: slug )
   end
 
