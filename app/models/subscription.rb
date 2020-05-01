@@ -2,6 +2,8 @@
 
 # Model for mailing list subscriptions
 class Subscription < ApplicationRecord
+  include Token
+
   validates :subscriber, presence: true
   validates :list,       presence: true
 

@@ -11,12 +11,12 @@ module NameTitleSlug
   private_constant :ANCHORED_SLUG_REGEX
 
   included do
-    validates :name, presence:  true
+    validates :name,  presence: true
     validates :title, presence: true
-    validates :slug, presence:  true
-    validates :slug, safe_slug: true
-    validates :slug, format:    ANCHORED_SLUG_REGEX
-    if respond_to?( :section )
+    validates :slug,  presence: true, format: ANCHORED_SLUG_REGEX
+
+    if has_attribute?( :section_id )
+      validates :slug, safe_slug: true
       validates :slug, uniqueness: {
         scope: :section,
         message: I18n.t( 'concerns.name_title_slug.slug_must_be_unique' )

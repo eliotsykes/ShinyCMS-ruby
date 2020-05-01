@@ -2,8 +2,8 @@
 
 # Model for mailing lists
 class MailingList < ApplicationRecord
-  validates :name,  presence: true
+  include NameTitleSlug
 
   has_many :subscriptions, dependent: :destroy
-  has_many :subscribers, through: :subscriptions
+  has_many :subscribers,   through: :subscriptions
 end
