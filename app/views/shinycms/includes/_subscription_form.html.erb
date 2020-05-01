@@ -1,0 +1,24 @@
+<% list ||= MailingList.first %>
+
+<% if list.present? %>
+
+<% if user_signed_in? %>
+  <%= button_to t( 'subscribe' ), subscription_path,
+      params: { list_id: list.id } %>
+<% else %>
+  <%= form_for EmailRecipient.new, url: subscription_path, method: :post, class: 'subscription_form' do |f| %>
+    <%= f.hidden_field_tag :list_id, list.id %>
+    <% if show_name_field %>
+    <%= f.text_field :name %><br>
+    <% end %>
+    <%= f.text_field :email %>
+    <% if show_name_field %><br><% end %>
+    <%= f.submit t( 'subscribe' ) %>
+  <% end %>
+<% end %>
+
+<% else %>
+  <p>
+    [ Subscription form error: no lists found ]
+  </p>
+<% end %>

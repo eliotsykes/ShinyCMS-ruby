@@ -61,6 +61,12 @@ Rails.application.routes.draw do
     get 'site-settings', to: 'site_settings#index'
     put 'site-settings', to: 'site_settings#update'
 
+    get    'subscriptions',       to: 'subscriptions#index'
+    post   'subscription',        to: 'subscriptions#create'
+    get    'subscription/:token', to: 'subscriptions#edit'
+    put    'subscription/:token', to: 'subscriptions#update'
+    delete 'subscription/:token', to: 'subscriptions#destroy'
+
     get 'tags',       to: 'tags#index', as: :tags
     get 'tags/cloud', to: 'tags#cloud', as: :tag_cloud
     get 'tags/list',  to: 'tags#list',  as: :tag_list
@@ -107,12 +113,12 @@ Rails.application.routes.draw do
       get :comments, to: 'comments#index'
       put :comments, to: 'comments#update'
       scope path: 'comment' do
-        get    'hide/:id',    to: 'comments#hide',   as: :hide_comment
-        get    'unhide/:id',  to: 'comments#unhide', as: :unhide_comment
-        get    'lock/:id',    to: 'comments#lock',   as: :lock_comment
-        get    'unlock/:id',  to: 'comments#unlock', as: :unlock_comment
+        get    ':id/hide',    to: 'comments#hide',   as: :hide_comment
+        get    ':id/unhide',  to: 'comments#unhide', as: :unhide_comment
+        get    ':id/lock',    to: 'comments#lock',   as: :lock_comment
+        get    ':id/unlock',  to: 'comments#unlock', as: :unlock_comment
         get    ':id/is-spam', to: 'comments#mark_as_spam', as: :spam_comment
-        delete 'delete/:id',  to: 'comments#delete', as: :delete_comment
+        delete ':id',         to: 'comments#delete', as: :delete_comment
       end
       scope path: 'discussion' do
         get ':id/hide',   to: 'discussions#hide',   as: :hide_discussion
