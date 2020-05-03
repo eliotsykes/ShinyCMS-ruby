@@ -7,6 +7,7 @@
 Things which aren't optional:  
 * Double opt-in subscriptions are a basic human right ;)
 * Instantly-effective unsubscribe links and headers in all list emails
+* Settings with privacy implications should default to the more private setting
 
 General thoughts:  
 * UUIDs for anything that doesn't have slugs - do not expose sequential IDs!
@@ -20,9 +21,6 @@ Lists / Groups:
   * Hidden: yes/no
   * Publicised (listed on hub page of some sort): yes/no
 * Open for subscriptions: yes/no / see 'List subscriptions' below
-* List archives (web view of previous posts to a list)
-  * Provides 'view this email in your browser' functionality
-  * Viewable by: anybody / subscribers / admins / nobody
 
 List categories:  
 * e.g. Announcements/Promo/Discussion/etc
@@ -31,8 +29,8 @@ List categories:
 List subscriptions:  
 * Can ask to subscribe: anybody / registered website users / nobody
 * Subscriptions require approval: yes/no
-  * Subscriptions can be approved by: any subscriber / established subscribers /
-    N+/N%+ subscribers / registered users / admins only
+  * Subscriptions can be approved by: any subscriber / established subscribers
+    / >N/>N% subscribers / registered users / admins only
 * Subscribers can be removed by: [ see previous list ]
 * When somebody unsubscribes by any interface other than the 'manage all subs'
   page, we should include details of any other lists they are still subscribed
@@ -40,9 +38,16 @@ List subscriptions:
   subscriptions' link and also a one-click 'unsubscribe from everything' link
   (if they're leaving, they're leaving - making it harder for them is pointless)
 
+List archives:  
+  * Web view of previous posts to a list
+  * Provides 'view this email in your browser' functionality
+  * Viewable by: anybody / subscribers / admins / nobody
+    * Subscribers can see posts from before they subscribed: yes/no
+
 List posts:  
 * Can post to list: any subscriber / subscribers over X duration / subscribers
   over N previous posts / admins only
+
 Moderation:  
 * Posts to list require approval if they are from: anybody / unregistered
   users / new subscribers (<N posts / <X duration) / non-admins
@@ -50,11 +55,12 @@ Moderation:
   established subscribers / the collective vote of >N or >N% subscribers /
   registered users / admins only
 
-Tracking (marketing?) and Engagement (list quality/sender reputation):  
+Tracking (for marketing?) and Engagement (list quality/sender reputation):  
 * Opens are tracked: yes/no
  * Is it possible to filter out 'opens' by spam-scanning software (etc) that
-   follows links to tracking pixels? Look at user-agents maybe?
+   downloads images (including our tracking pixels)? Look at user-agents maybe?
 * Clicks are tracked: yes/no
+  * Again, can we filter out link-following by software?
   * Track all the details of a click (probably for marketing) or just the fact
     that 'a click happened' (enough for engagement): detail/no detail
   * If opens and/or clicks are tracked, use them to disable emails to
@@ -95,5 +101,11 @@ e.g.
   * Extension of 'view archives' above, or replacement for it?
 * Once the system has payment handlers implemented: pay to subscribe
 * Autoresponders
-  * 'Timed series' autoresponders
-    * (Combine with 'pay to subscribe' to enable selling 'six week course in X')
+* 'Timed series' emails
+  * Could be triggered by
+    * System (new user signs up -> triggers onboarding series
+    * Admin *shrug*
+    * User request
+      * Via web UI
+      * Via autoresponder
+      * Via 'pay to subscribe' ("Buy our six week 'learn to cook' course!", etc)
