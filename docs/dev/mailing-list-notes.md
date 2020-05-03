@@ -8,9 +8,15 @@ Things which aren't optional:
 * Double opt-in subscriptions are a basic human right ;)
 * Instantly-effective unsubscribe links and headers in all list emails
 
+General thoughts:  
+* UUIDs for anything that doesn't have slugs - do not expose sequential IDs!
+  * Good time to switch the whole system to UUIDs under the hood?
+
 Lists / Groups:  
 * Enabled (emails will be delivered): yes/no
 * List details page
+  * Useful info: description, owner/admins, etc
+  * Useful links: sub/unsub, view archives, view subscribers, etc
   * Hidden: yes/no
   * Publicised (listed on hub page of some sort): yes/no
 * Open for subscriptions: yes/no / see 'List subscriptions' below
