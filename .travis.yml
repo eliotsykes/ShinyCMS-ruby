@@ -5,12 +5,17 @@ dist: bionic
 language: ruby
 
 rvm:
+  - 2.5.8
+  - 2.6.6
   - 2.7.1
 
 cache: bundler
 
 addons:
   postgresql: "10"
+
+before_install:
+  - gem install bundler
 
 before_script:
   - bundle exec rails assets:precompile
